@@ -1,0 +1,6 @@
+images
+.vscode
+.idea
+
+*.py[cod]
+__pycache__
