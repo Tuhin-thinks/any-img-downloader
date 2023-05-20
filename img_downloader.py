@@ -47,9 +47,12 @@ if __name__ == '__main__':
     downloaded_links = config.get('downloaded_links', [])
     failed_links = config.get('failed_links', [])
 
-
-    with open(INPUT_FILENAME, 'r', encoding='utf-8') as reader:
-        all_links = json.load(reader)
+    try:
+        with open(INPUT_FILENAME, 'r', encoding='utf-8') as reader:
+            all_links = json.load(reader)
+    except FileNotFoundError:
+        print(f"File {INPUT_FILENAME} not found, create a file with name {INPUT_FILENAME} and add all image links in it.")
+        exit(1)
 
     start_number = decided_start_number()
     tot_length = len(all_links) + start_number - 1
